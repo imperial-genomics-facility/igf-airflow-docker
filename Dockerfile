@@ -7,6 +7,8 @@ ENTRYPOINT []
 ARG AIRFLOW_HOME=/usr/local/airflow
 
 COPY script/entrypoint.sh /entrypoint.sh
+COPY script/airflow_user_setup.py /airflow_user_setup.py
+COPY script/requirements.txt /requirements.txt
 
 USER airflow
 WORKDIR ${AIRFLOW_HOME}
