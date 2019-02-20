@@ -13,9 +13,9 @@ TRY_LOOP="20"
 : "${USER_EMAIL:='airflow@email.com'}"
 : "${USER_PASS:='password'}"
 
-: "${AIRFLOW__CORE__FERNET_KEY:=${FERNET_KEY:=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")}}"
-: "${AIRFLOW__CORE__EXECUTOR:=${EXECUTOR:-Local}Executor}"
-: "${AIRFLOW__CORE__LOAD_EXAMPLES:=${LOAD_EG:-False}"
+: "${AIRFLOW__CORE__FERNET_KEY:=${FERNET_KEY:=$(python -c 'from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)')}}"
+: "${AIRFLOW__CORE__EXECUTOR:=${EXECUTOR:-LocalExecutor}}"
+: "${AIRFLOW__CORE__LOAD_EXAMPLES:=${LOAD_EG:-False}}"
 
 ## Export variables
 
@@ -60,7 +60,7 @@ fi
 
 case "$1" in
   first_run)
-  python /airflow_user_setup.py "${USER_NAME}"  "${USER_EMAIL}" "${USER_PASS}"
+  python /airflow_user_setup.py "$USER_NAME"  "$USER_EMAIL" "$USER_PASS"
   sleep 10
   airflow initdb
   sleep 10
