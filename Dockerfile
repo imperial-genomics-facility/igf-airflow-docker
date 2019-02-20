@@ -12,7 +12,6 @@ COPY script/requirements.txt /requirements.txt
 
 
 RUN chown -R airflow: ${AIRFLOW_HOME}
-RUN chmod +x /entrypoint.sh
 
 USER airflow
 WORKDIR ${AIRFLOW_HOME}
