@@ -10,8 +10,12 @@ COPY script/entrypoint.sh /entrypoint.sh
 COPY script/airflow_user_setup.py /airflow_user_setup.py
 COPY script/requirements.txt /requirements.txt
 
+
 USER airflow
 WORKDIR ${AIRFLOW_HOME}
+
+RUN chown -R airflow: ${AIRFLOW_HOME}
+RUN chmod +x /entrypoint.sh
 EXPOSE 8080 5555 8793
 
 ENTRYPOINT ["/entrypoint.sh"]
