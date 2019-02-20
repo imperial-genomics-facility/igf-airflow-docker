@@ -18,6 +18,6 @@ RUN chown -R airflow: ${AIRFLOW_HOME}
 RUN chmod +x /entrypoint.sh
 EXPOSE 8080 5555 8793
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh","/entrypoint.sh"]
 
 CMD ["webserver"] 
