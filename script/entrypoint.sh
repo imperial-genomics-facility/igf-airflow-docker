@@ -16,7 +16,7 @@ TRY_LOOP="20"
 : "${AIRFLOW__CORE__EXECUTOR:='LocalExecutor'}"
 : "${AIRFLOW__CORE__LOAD_EXAMPLES:=True}}"
 : "${AIRFLOW__WEBSERVER__AUTHENTICATE:=True}}"
-: "${AIRFLOW__WEBSERVER__AUTH_BACKEND:='airflow.contrib.auth.backends.password_auth'}}"
+: "${AIRFLOW__WEBSERVER__AUTH_BACKEND:=airflow.contrib.auth.backends.password_auth}}"
 : "${AIRFLOW__CORE__FERNET_KEY:=${FERNET_KEY:=$(python -c 'from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)')}}"
 
 ## Export variables
