@@ -18,6 +18,6 @@ WORKDIR ${AIRFLOW_HOME}
 
 EXPOSE 8080 5555 8793
 
-ENTRYPOINT ["sh","/entrypoint.sh"]
+ENTRYPOINT ["bash","/entrypoint.sh"]
 
 CMD ["webserver"] 
