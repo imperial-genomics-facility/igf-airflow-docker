@@ -51,10 +51,8 @@ wait_for_port() {
 
 ## Check for Postgres db
 
-if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" ]; then
-  if [ -z "$AIRFLOW__CORE__SQL_ALCHEMY_CONN" ]; then 
-    AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB"
-  fi
+if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" &&  -z "$AIRFLOW__CORE__SQL_ALCHEMY_CONN" ]; then 
+  AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB"
   wait_for_port "Postgres" "$POSTGRES_HOST" "$POSTGRES_PORT"
 fi
 
