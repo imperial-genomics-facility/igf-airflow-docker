@@ -14,8 +14,8 @@ TRY_LOOP="20"
 : "${USER_PASS:='password'}"
 
 : "${AIRFLOW__CORE__EXECUTOR:='LocalExecutor'}"
+: "${AIRFLOW__CORE__LOAD_EXAMPLES:='True'}}"
 : "${AIRFLOW__CORE__FERNET_KEY:=${FERNET_KEY:=$(python -c 'from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)')}}"
-: "${AIRFLOW__CORE__LOAD_EXAMPLES:=${LOAD_EG:-False}}"
 
 ## Export variables
 
@@ -51,7 +51,7 @@ wait_for_port() {
 
 ## Check for Postgres db
 
-if [ "$AIRFLOW__CORE__EXECUTOR" -eq "LocalExecutor" ]; then
+if [ "$AIRFLOW__CORE__EXECUTOR" == "LocalExecutor" ]; then
   AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB"
   wait_for_port "Postgres" "$POSTGRES_HOST" "$POSTGRES_PORT"
 fi
