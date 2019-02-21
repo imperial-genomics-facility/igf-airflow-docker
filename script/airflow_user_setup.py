@@ -10,6 +10,7 @@ try:
   user.username = sys.argv[1]
   user.email = sys.argv[2]
   user.password = sys.argv[3]
+  user.supersuer = 1
   session = settings.Session()
   session.add(user)
   session.commit()
