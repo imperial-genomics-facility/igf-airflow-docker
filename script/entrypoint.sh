@@ -4,14 +4,14 @@ TRY_LOOP="20"
 
 ## Set defaults
 
-: "${POSTGRES_HOST:='postgres'}"
-: "${POSTGRES_PORT:='5432'}"
-: "${POSTGRES_USER:='airflow'}"
-: "${POSTGRES_PASSWORD:='airflow'}"
-: "${POSTGRES_DB:='airflow'}"
-: "${USER_NAME:='airflow'}"
-: "${USER_EMAIL:='airflow@email.com'}"
-: "${USER_PASS:='password'}"
+: "${POSTGRES_HOST:=postgres}"
+: "${POSTGRES_PORT:=5432}"
+: "${POSTGRES_USER:=airflow}"
+: "${POSTGRES_PASSWORD:=airflow}"
+: "${POSTGRES_DB:=airflow}"
+: "${USER_NAME:=airflow}"
+: "${USER_EMAIL:=airflow@email.com}"
+: "${USER_PASS:=password}"
 
 : "${AIRFLOW__CORE__EXECUTOR:=LocalExecutor}"
 : "${AIRFLOW__CORE__LOAD_EXAMPLES:=True}}"
