@@ -15,6 +15,8 @@ RUN chown -R airflow: ${AIRFLOW_HOME}
 
 USER airflow
 WORKDIR ${AIRFLOW_HOME}
+RUN pip install --user --upgrade pip && \
+    pip install --user -r /requirements.txt
 
 EXPOSE 8080 5555 8793
 
