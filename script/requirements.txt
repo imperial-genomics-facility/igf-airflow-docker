@@ -1,1 +1,2 @@
 flask_bcrypt
+psycopg2-binary
