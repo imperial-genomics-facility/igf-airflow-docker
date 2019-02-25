@@ -50,8 +50,10 @@ wait_for_port() {
 
 ## Check for Postgres db
 
-if [[ "$AIRFLOW__CORE__EXECUTOR" != "SequentialExecutor" && -z "$AIRFLOW__CORE__SQL_ALCHEMY_CONN" ]]; then 
-  AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB"
+if [[ "$AIRFLOW__CORE__EXECUTOR" != "SequentialExecutor" ]];then
+  if [[ -z "$AIRFLOW__CORE__SQL_ALCHEMY_CONN" ]]; then 
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB"
+  fi
   wait_for_port "Postgres" "$POSTGRES_HOST" "$POSTGRES_PORT"
 fi
 
