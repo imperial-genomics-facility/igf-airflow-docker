@@ -6,6 +6,22 @@ ENTRYPOINT []
 
 ARG AIRFLOW_HOME=/usr/local/airflow
 
+RUN apt-get update -yqq \
+    && apt-get upgrade -yqq \
+    && apt-get install -yqq --no-install-recommends \
+    openssl \
+    libssl1.1 \
+    libssh2-1 \
+    && apt-get autoremove -yqq --purge \
+    && apt-get clean \
+    && rm -rf \
+        /var/lib/apt/lists/* \
+        /tmp/* \
+        /var/tmp/* \
+        /usr/share/man \
+        /usr/share/doc \
+        /usr/share/doc-base
+
 COPY script/entrypoint.sh /entrypoint.sh
 COPY script/airflow_user_setup.py /airflow_user_setup.py
 COPY script/requirements.txt /requirements.txt
