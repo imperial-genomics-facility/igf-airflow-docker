@@ -6,6 +6,8 @@ ENTRYPOINT []
 
 ARG AIRFLOW_HOME=/usr/local/airflow
 
+USER root
+
 RUN mkdir -p /var/lib/apt/lists/partial \
     && apt-get update -yqq \
     && apt-get upgrade -yqq \
