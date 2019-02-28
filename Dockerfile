@@ -6,7 +6,8 @@ ENTRYPOINT []
 
 ARG AIRFLOW_HOME=/usr/local/airflow
 
-RUN apt-get update -yqq \
+RUN mkdir -p /var/lib/apt/lists/partial \
+    && apt-get update -yqq \
     && apt-get upgrade -yqq \
     && apt-get install -yqq --no-install-recommends \
     openssl \
